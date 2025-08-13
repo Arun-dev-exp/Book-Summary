@@ -1,5 +1,4 @@
 # Book Summary
-[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/Arun-dev-exp/Book-Summary.git)
 
 A full-stack web application for creating, managing, and browsing a personal collection of book summaries. The application features a dynamic, modern interface and is built with Node.js, Express, and PostgreSQL.
 
