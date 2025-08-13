@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+    <div class="container">
+        <header class="form-header">
+            <h1 class="form-title"><%= heading %></h1>
+        </header>
+
+        <main class="form-container">
+            <% if(locals.edit) { %>
+                <form action="/update-post/<%= edit.id %>" method="post" class="post-form edit-form">
+                    <input type="hidden" value="<%= edit.id %>" name="id" class="hidden-input"/>
+                    
+                    <div class="form-group">
+                        <label for="title" class="form-label">Book Title</label>
+                        <input 
+                            type="text" 
+                            name="title" 
+                            id="title"
+                            value="<%= edit.title %>" 
+                            placeholder="Enter book title" 
+                            class="form-input title-input"
+                            required
+                        />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="summary" class="form-label">Summary</label>
+                        <textarea 
+                            name="summary" 
+                            id="summary"
+                            rows="10" 
+                            placeholder="Write your book summary..." 
+                            class="form-textarea summary-textarea"
+                            required
+                        ><%= edit.summary %></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group form-group-half">
+                            <label for="rating" class="form-label">Rating</label>
+                            <input 
+                                type="number" 
+                                name="rating" 
+                                id="rating"
+                                min="1"
+                                max="5"
+                                step="0.1"
+                                placeholder="Rate out of 5" 
+                                value="<%= edit.rating %>" 
+                                class="form-input rating-input"
+                                required
+                            />
+                        </div>
+                        
+                        <div class="form-group form-group-half">
+                            <label for="cover_id" class="form-label">Cover ID</label>
+                            <input 
+                                type="text" 
+                                name="cover_id" 
+                                id="cover_id"
+                                placeholder="Book cover image ID" 
+                                value="<%= edit.book_cover_id %>" 
+                                class="form-input cover-input"
+                                required
+                            />
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            <%= submit %>
+                        </button>
+                        <a href="/" class="btn btn-secondary cancel-btn">Cancel</a>
+                    </div>
+                </form>
+            <% } else { %>
+                <form action="/post" method="post" class="post-form create-form">
+                    <div class="form-group">
+                        <label for="title" class="form-label">Book Title</label>
+                        <input 
+                            type="text" 
+                            name="title" 
+                            id="title"
+                            placeholder="Enter book title" 
+                            class="form-input title-input"
+                            required
+                        />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="summary" class="form-label">Summary</label>
+                        <textarea 
+                            name="summary" 
+                            id="summary"
+                            rows="10" 
+                            placeholder="Write your book summary..." 
+                            class="form-textarea summary-textarea"
+                            required
+                        ></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group form-group-half">
+                            <label for="rating" class="form-label">Rating</label>
+                            <input 
+                                type="number" 
+                                name="rating" 
+                                id="rating"
+                                min="1"
+                                max="5"
+                                step="0.1"
+                                placeholder="Rate out of 5" 
+                                class="form-input rating-input"
+                                required
+                            />
+                        </div>
+                        
+                        <div class="form-group form-group-half">
+                            <label for="cover_id" class="form-label">Cover ID</label>
+                            <input 
+                                type="text" 
+                                name="cover_id" 
+                                id="cover_id"
+                                placeholder="Book cover image ID" 
+                                class="form-input cover-input"
+                                required
+                            />
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            <%= submit %>
+                        </button>
+                        <a href="/" class="btn btn-secondary cancel-btn">Cancel</a>
+                    </div>
+                </form>
+            <% } %>
+        </main>
+    </div>
+</body>
+</html>
